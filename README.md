@@ -1,2 +1,8 @@
 # MLU_teaching2018
-Repository for MLU teaching material
+## Introduction to Measurement of Biodiversity using mobr
+
+Workshop to introduce students to the components of species richness and their scale-dependence.
+
+
+
+
