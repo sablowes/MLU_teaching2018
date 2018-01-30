@@ -20,7 +20,7 @@ Short introduction to statistical models:
 - generalised linear models
 - non-linear models (e.g., basis expansion, generalised additive models, LOESS)
 
-### Linear models
+## Linear models
 Linear models take the form:
 $$ y_i = \beta x_i + \epsilon_i,$$
 where $y_i$ is the observed *response* variable (here species richness), $\beta$ is a vector of estimated (unknown) parameters, $x_i$ are (known) covariates (can be continuous or categorical *predictors*), and $\epsilon_i$ are random variables (mutually independent with zero mean and variance, $\sigma^2$)
@@ -105,14 +105,18 @@ f2c <- plot_grid(f2c, fig2c, ncol = 1, rel_heights = c(0.2, 0.9))
 plot_grid(f1, f2a, f2b, f2c, nrow = 2, ncol = 2)
 ```
 
-### *Generalized* linear models
+## Generalized linear models
+
 Extend linear models to allow for response distributions other than normal. Now the basic structure is:
+
 
 $Y_i$ ~ some exponential family distribution
 
 $E(Y_i)=\mu_i$, and $var(Y_i)=\sigma^2$
 
 $g(\mu_i)=\beta X_i$
+
+
 
 For example, the model above assumes normally distributed error, so
 
@@ -122,6 +126,8 @@ $E(Y_i)=\mu_i$, and $var(Y_i)=\sigma^2$
 
 $g(\mu_i)=\beta X_i$.
 
+
+
 Alternatively, as our estimate of species richness arises from a *count* process, we could formulate the model using the poisson distribution
 
 $Y_i$ ~ $poisson(\mu_i)$
@@ -130,6 +136,8 @@ $Y_i$ ~ $poisson(\mu_i)$
 $E(Y_i)=\mu_i$, and $var(Y_i)=\mu_i$
 
 $log(\mu_i)=\beta X_i$.
+
+
 
 ```{r echo = FALSE}
 fig3a <- vdat %>%
@@ -149,7 +157,8 @@ fig3b <- site_occupancy %>%
   stat_smooth(aes(x = pH, y = occurrence),
               method = 'glm', method.args = list(family = 'binomial')) +
   scale_y_continuous(breaks = c(0, 1)) +
-  ylab('Probability of occurrence')
+  ylab('Probability of occurrence') + 
+  theme_bw()
 
-plot_grid(fi3a, fig3b, nrow = 1)
+plot_grid(fig3a, fig3b, nrow = 1)
 ```

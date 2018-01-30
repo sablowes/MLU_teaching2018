@@ -8,8 +8,9 @@ load (url ('http://www.davidzeleny.net/anadat-r/lib/exe/fetch.php/data:vltava.r'
 str(vltava)
 
 # separate into site x species and environment dataframes
-env <- vltava$env %>% as_tibble() %>%
-  mutate(site = 1:nrow(env))
+env <- vltava$env %>%
+  mutate(site = 1:nrow(vltava$env)) %>% 
+  as_tibble()
 # pairs(env)
 
 
@@ -54,8 +55,8 @@ site_occupancy <- inner_join(env, site_occupancy, by = 'site') %>%
 comm_presence <- inner_join(env, comm_presence, by = 'site') %>%
   select(-TRANSECT, -LIGHT,  -TEMP,  -CONT, -MOIST, -REACT, -NUTR)
 
-setwd('~/Dropbox/4teaching/MLU_teaching2018/data/')
-save(vdat, vltava,  comm_presence, site_occupancy, file = 'vltava.Rdata')
+# setwd('~/Dropbox/4teaching/MLU_teaching2018/data/')
+# save(vdat, vltava,  comm_presence, site_occupancy, file = 'vltava.Rdata')
 ##-------- linear model example: S ~ elevation--------------------
 fig1 <- vdat %>%
   ggplot() +

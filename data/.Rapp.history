@@ -1,0 +1,2 @@
+load("/Users/shane/Dropbox/4teaching/MLU_teaching2018/data/vltava.Rdata")
+ls()
